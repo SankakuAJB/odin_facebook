@@ -7,6 +7,8 @@
 		<br />
 		<%= post.content %>
 		<%= "Posted by #{post.user.name}" %><%= link_to "delete", post, method: :delete, data: {confirm: "You sure?"} %>
+		<%= render 'shared/like_form', post: post %>
+		<%= "#{post.likes.count} likes" %>
 		<br />
 		<% post.comments.each do |comment| %>
 			<%= comment.content %>

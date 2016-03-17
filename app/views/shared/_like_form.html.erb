@@ -1,0 +1,7 @@
+<%= form_for @like, :url => post_likes_path(post.id) do |f| %>
+	
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<%= f.submit "Like" %>
+
+<% end %>

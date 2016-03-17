@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 		@posts = Post.where(user_id: current_user.id)
 		@post = Post.new
 		@comment = Comment.new
+		@like = Like.new
 	end
 
 	def create
