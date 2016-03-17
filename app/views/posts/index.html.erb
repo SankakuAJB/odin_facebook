@@ -1,1 +1,16 @@
-index
+<div>
+	<%= render 'shared/post_form' %>
+</div>
+
+<% if !@posts.nil? %>
+	<% @posts.each do |post| %>
+		<%= post.content %>
+		<%= "Posted by #{post.user.name}" %><%= link_to "delete", post, method: :delete, data: {confirm: "You sure?"} %>
+		<br /><br />
+		<% post.comments.each do |comment| %>
+			<%= comment.content %>
+			<%= "#{comment.user.name}" %><%= link_to "delete", comment, method: :delete, data: {confirm: "You sure?"} %>
+		<% end %>
+		<%= render 'shared/comment_form', :post => post %>
+	<% end %>
+<% end %>
