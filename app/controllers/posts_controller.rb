@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 	def index
 		@posts = Post.where(user_id: current_user.id)
 		@post = Post.new
+		@comment = Comment.new
 	end
 
 	def create

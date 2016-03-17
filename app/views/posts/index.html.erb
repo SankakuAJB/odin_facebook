@@ -4,13 +4,15 @@
 
 <% if !@posts.nil? %>
 	<% @posts.each do |post| %>
+		<br />
 		<%= post.content %>
 		<%= "Posted by #{post.user.name}" %><%= link_to "delete", post, method: :delete, data: {confirm: "You sure?"} %>
-		<br /><br />
+		<br />
 		<% post.comments.each do |comment| %>
 			<%= comment.content %>
-			<%= "#{comment.user.name}" %><%= link_to "delete", comment, method: :delete, data: {confirm: "You sure?"} %>
+			<%= "#{comment.user.name}" %><%= link_to "delete", post_comment_path(comment.id, post.id), method: :delete, data: {confirm: "You sure?"} %>
+			<br />
 		<% end %>
-		<%= render 'shared/comment_form', :post => post %>
+		<%= render 'shared/comment_form', post: post %>
 	<% end %>
 <% end %>
