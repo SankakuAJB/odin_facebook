@@ -1,0 +1,6 @@
+<br />
+	<%= post.content %>
+	<%= "Posted by #{post.user.name}" %><%= link_to "delete", post, method: :delete, data: {confirm: "You sure?"} %>
+	<%= render 'likes/like_button', post: post %>
+	<%= "#{post.likes.count} likes" %>
+<br />

@@ -1,9 +1,14 @@
+Profile
+
+<%= @user.name %>
+<br /><br />
+
 <div>
 	<%= render 'shared/post_form' %>
 </div>
 
-<% if !@posts.nil? %>
-	<% @posts.each do |post| %>
+<% if !@user.posts.nil? %>
+	<% @user.posts.each do |post| %>
 		<%= render 'posts/post', post: post %>
 		<% post.comments.each do |comment| %>
 			<%= render 'comments/comment', comment: comment, post: post %>
