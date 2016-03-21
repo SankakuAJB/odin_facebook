@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 	before_action :correct_user, only: :destroy
 
 	def index
-		@posts = Post.where(user_id: current_user.id)
+		@friend_ids = current_user.friends.collect {|friend| friend.friend_id}
+		@posts = Post.where(user_id: [current_user.id, @friend_ids]).order("created_at desc")
 		@post = Post.new
 		@comment = Comment.new
 		@like = Like.new

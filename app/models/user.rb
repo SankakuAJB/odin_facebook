@@ -18,12 +18,6 @@ class User < ActiveRecord::Base
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
 
-
-    has_many :active_relationships, class_name: "Friend",
-    				  			    foreign_key: "friend_id",
-    				                dependent: :destroy
-    has_many :friends, through: :active_relationships, source: :followed
- 
-
-
+    has_many :friends
+    
 end
